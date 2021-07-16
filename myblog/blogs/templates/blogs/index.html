@@ -1,0 +1,11 @@
+{% if blogs_list %}
+    <table>
+        <tr>
+        {% for blog in blogs_list %}
+            <td><a href="{% url 'blogs:detail' blog.id %}">{{ blog.title }}</a></td>
+        {% endfor %}
+        </tr>
+    </table>
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}

@@ -1,0 +1,13 @@
+<h1>{{ blog.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for art in blog.article_set.all %}
+    <div>
+        <h2>{{ art.headline }}</h2>
+        <div>{{ art.text }}</div>
+        {% load static %}
+            <img src="{% static 'image/3gxzbxyQaZ8.jpg' %}" alt="My image">
+        <div>Дата публикации: {{art.get_date}}</div>
+    </div>
+{% endfor %}
