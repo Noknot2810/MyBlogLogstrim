@@ -1,4 +1,5 @@
 import datetime
+import os
 
 from django.db import models
 from django.utils import timezone
@@ -28,3 +29,6 @@ class Article(models.Model):
 
     def get_date(self):
         return self.pub_date.strftime('%d.%m.%Y %H:%M')
+
+    def filename(self):
+        return os.path.basename(self.image.name)

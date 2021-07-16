@@ -1,4 +1,6 @@
+<div><a href="{% url 'blogs:index' %}">Main page</a></div>
 <h1>{{ blog.title }}</h1>
+<div>({{ blog.art_count }} article/es found)</div>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -7,7 +9,10 @@
         <h2>{{ art.headline }}</h2>
         <div>{{ art.text }}</div>
         {% load static %}
-            <img src="{% static 'image/3gxzbxyQaZ8.jpg' %}" alt="My image">
+            <img src="{% static art.filename %}" alt="My image">
         <div>Дата публикации: {{art.get_date}}</div>
+        <input type="button" value="Update" onClick='location.href="/blogs/article/{{art.id}}/update/"'>
     </div>
 {% endfor %}
+
+<input type="button" value="I want to write an article" onClick='location.href="/blogs/article/create/"'>

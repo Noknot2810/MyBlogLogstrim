@@ -29,7 +29,11 @@ class NewArticleView(CreateView):
         #return super(NewArticleView, self).form_valid(form)
         post = form.save(commit=False)
         post.save()
-        return HttpResponseRedirect(reverse('blogs:detail', args=(form.instance.blog.id,)))
+        id_blog = form.instance.blog.id
+        chosen_blog = get_object_or_404(Blog, pk=id_blog)
+        chosen_blog.art_count += 1
+        chosen_blog.save()
+        return HttpResponseRedirect(reverse('blogs:detail', args=(id_blog,)))
 
 
 class ChangeArticleView(UpdateView):
