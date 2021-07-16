@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from .models import Blog, Article
 
@@ -43,6 +43,17 @@ class ChangeArticleView(UpdateView):
 
     def get_success_url(self):
         return reverse('blogs:detail', kwargs={'pk': self.object.blog.id})
+
+class DeleteArticleView(DeleteView):
+    model = Article
+    #success_url = reverse_lazy('polls:index')
+
+    def get_success_url(self):
+        id_blog = self.object.blog.id
+        chosen_blog = get_object_or_404(Blog, pk=id_blog)
+        chosen_blog.art_count -= 1
+        chosen_blog.save()
+        return reverse('blogs:detail', kwargs={'pk': id_blog})
 
 """
 

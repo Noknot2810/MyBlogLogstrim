@@ -12,6 +12,7 @@
             <img src="{% static art.filename %}" alt="My image">
         <div>Дата публикации: {{art.get_date}}</div>
         <input type="button" value="Update" onClick='location.href="/blogs/article/{{art.id}}/update/"'>
+        <input type="button" value="Delete" onClick='location.href="/blogs/article/{{art.id}}/delete/"'>
     </div>
 {% endfor %}
 
