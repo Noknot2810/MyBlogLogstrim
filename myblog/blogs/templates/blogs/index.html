@@ -1,3 +1,6 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
 {% if blogs_list %}
     <table>
         <tr>
@@ -9,3 +12,4 @@
 {% else %}
     <p>No blogs are available.</p>
 {% endif %}
+{% endblock %}

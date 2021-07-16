@@ -123,6 +123,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     BASE_DIR / 'blogs/static/images',
+    BASE_DIR / 'blogs/static/stylesheets',
 ]
 
 # Default primary key field type

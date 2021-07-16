@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form method="post"  enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Send">
-    </form>
-    <input type="button" value="I change my mind" onClick='location.href="/blogs/"'>
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block title %}<title>New article</title>{% endblock %}
+
+{% block content %}
+<form method="post"  enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Send">
+</form>
+<input type="button" value="I change my mind" onClick='location.href="/blogs/"'>
+{% endblock %}

@@ -1,8 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Confirm delete</title>{% endblock %}
+
+{% block content %}
 <h1> Delete question</h1>
 <p> Are you sure you want to delete the article?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
   <input type="submit" value="Yes, delete." />
-
 </form>
+<input type="button" value="I change my mind" onClick='location.href="/blogs/"'>
+{% endblock %}
